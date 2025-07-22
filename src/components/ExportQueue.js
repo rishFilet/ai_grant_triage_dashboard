@@ -30,7 +30,8 @@ function ExportQueue({ applications }) {
   const handleExportQueue = async () => {
     setExporting(true);
     try {
-      const response = await fetch('/api/export-queue');
+      const baseURL = process.env.REACT_APP_API_URL || '/api';
+      const response = await fetch(`${baseURL}/export-queue`);
       const data = await response.json();
       setExportData(data);
     } catch (error) {

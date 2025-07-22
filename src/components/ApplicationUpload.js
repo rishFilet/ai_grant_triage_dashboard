@@ -91,7 +91,8 @@ function ApplicationUpload({ onUploaded }) {
         headers: requestHeaders,
       });
 
-      const response = await fetch('/api/applications', {
+      const baseURL = process.env.REACT_APP_API_URL || '/api';
+      const response = await fetch(`${baseURL}/applications`, {
         method: 'POST',
         body: requestBody,
         headers: requestHeaders,

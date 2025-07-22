@@ -33,9 +33,10 @@ function Dashboard() {
 
   const fetchData = async () => {
     try {
+      const baseURL = process.env.REACT_APP_API_URL || '/api';
       const [analyticsRes, applicationsRes] = await Promise.all([
-        fetch('/api/analytics'),
-        fetch('/api/applications'),
+        fetch(`${baseURL}/analytics`),
+        fetch(`${baseURL}/applications`),
       ]);
       
       const analyticsData = await analyticsRes.json();
